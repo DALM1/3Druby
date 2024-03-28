@@ -11,14 +11,14 @@ class Globe < Gosu::Window
     @rotation_y = 0
   end
 
-  # Charger la texture
+
   @texture = Gosu::Image.new('earth_texture.jpeg', retro: true)
 
   def update
-    # Faire tourner le globe sur l'axe Y
+
     @rotation_y += 1
 
-    # Faire tourner le globe sur l'axe X
+
     @rotation_x += 1
   end
 
@@ -45,7 +45,7 @@ class Globe < Gosu::Window
         x3, y3, z3 = rotate_point(@radius, theta1, phi2)
         x4, y4, z4 = rotate_point(@radius, theta2, phi2)
 
-        # Dessiner les triangles
+
         draw_triangle(x1, y1, z1, x2, y2, z2, x3, y3, z3)
         draw_triangle(x2, y2, z2, x4, y4, z4, x3, y3, z3)
       end
@@ -53,21 +53,21 @@ class Globe < Gosu::Window
   end
 
   def rotate_point(radius, theta, phi)
-    # Appliquer les rotations autour des axes Y et X
+
     x = radius * Math.cos(theta) * Math.sin(phi)
     y = radius * Math.sin(theta) * Math.sin(phi)
     z = radius * Math.cos(phi)
 
-    # Centrer les coordonnées par rapport à la fenêtre
+
     x += width / 2
     y += height / 2
 
-    # Retourner les nouvelles coordonnées
+
     [x, y, z]
   end
 
   def draw_triangle(x1, y1, z1, x2, y2, z2, x3, y3, z3)
-    # Dessiner un triangle à partir de trois points
+
     Gosu.draw_triangle(x1, y1, Gosu::Color::WHITE, x2, y2, Gosu::Color::WHITE, x3, y3, Gosu::Color::WHITE)
   end
 end
